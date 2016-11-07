@@ -1,22 +1,18 @@
 package com.anowit.servicesummary.ui;
 
-import android.app.Activity;
+import com.anowit.servicesummary.helpers.Sections;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -29,6 +25,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	 * Used to store the last screen title. For use in {@link #restoreActionBar()}.
 	 */
 	private CharSequence mTitle;
+	private static Sections sections;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +37,9 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+		sections = new Sections(getResources().getStringArray(R.array.sections), // 
+				new int[] { R.layout.fragment_main, R.layout.form }, // 
+				new int[] { R.menu.form, R.menu.main });
 	}
 
 	@Override
@@ -50,17 +50,8 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	}
 
 	public void onSectionAttached(int number) {
-		switch (number) {
-		case 1:
-			mTitle = getString(R.string.title_section1);
-			break;
-		case 2:
-			mTitle = getString(R.string.title_section2);
-			break;
-		case 3:
-			mTitle = getString(R.string.title_section3);
-			break;
-		}
+		mTitle = sections.getTitles()[number - 1];
+		sections.setCurrentSession(number);
 	}
 
 	public void restoreActionBar() {
@@ -76,7 +67,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 			// Only show items in the action bar relevant to this screen
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.main, menu);
+			getMenuInflater().inflate(sections.getCurrentMenuOption(), menu);
 			restoreActionBar();
 			return true;
 		}
@@ -122,8 +113,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-			return rootView;
+			return inflater.inflate(sections.getCurrentLayout(), container, false);
 		}
 
 		@Override
