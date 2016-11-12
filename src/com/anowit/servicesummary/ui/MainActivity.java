@@ -1,7 +1,5 @@
 package com.anowit.servicesummary.ui;
 
-import com.anowit.servicesummary.helpers.Sections;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -13,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.anowit.servicesummary.helpers.Sections;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -37,9 +37,11 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
-		sections = new Sections(getResources().getStringArray(R.array.sections), // 
+		sections = new Sections(//
+				getResources().getStringArray(R.array.sections), // 
 				new int[] { R.layout.fragment_main, R.layout.form }, // 
-				new int[] { R.menu.form, R.menu.main });
+				new int[] { R.menu.main, R.menu.form});
+		
 	}
 
 	@Override

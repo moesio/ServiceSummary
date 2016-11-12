@@ -1,10 +1,14 @@
 package com.anowit.servicesummary.ui;
 
+import com.anowit.servicesummary.adapters.TextWithIconArrayAdapter;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -94,7 +98,7 @@ public class NavigationDrawerFragment extends Fragment {
 				selectItem(position);
 			}
 		});
-		mDrawerListView.setAdapter(new ArrayAdapter<String>(getActionBar().getThemedContext(), android.R.layout.simple_list_item_1, android.R.id.text1, getResources().getStringArray(R.array.sections)));
+		mDrawerListView.setAdapter(new TextWithIconArrayAdapter<String>(getActionBar().getThemedContext(), R.layout.navigation, R.id.textViewNavigationItem, getResources().getStringArray(R.array.sections), new int[] {R.drawable.ic_list_black_24dp, R.drawable.ic_assignment_black_24dp}));
 
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
