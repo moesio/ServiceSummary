@@ -34,10 +34,10 @@ public class Sections {
 	}
 
 	public int getCurrentLayout() {
-		return layouts[currentSession - 1];
+		return layouts[currentSession];
 	}
 
 	public int getCurrentMenuOption() {
-		return menus[currentSession - 1];
+		return menus[currentSession];
 	}
 }

@@ -3,15 +3,13 @@
     android:id="@+id/textViewNavigationItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:drawablePadding="5dp"
+    android:drawablePadding="15dp"
     android:textColor="#333"
-    android:paddingTop="5dp"
-    android:paddingRight="5dp"
-    android:paddingBottom="5dp"
-    android:paddingLeft="5dp"
+    android:paddingTop="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
     android:textStyle="bold"
     android:textAppearance="?android:attr/textAppearanceSmall" >
 
-<!--     android:drawableLeft="@drawable/ic_list_black_24dp" -->
-<!--     android:drawableStart="@drawable/ic_list_black_24dp" -->
 </TextView>

@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.anowit.servicesummary.actions.SaveReportAction;
+import com.anowit.servicesummary.helpers.ActionMap;
 import com.anowit.servicesummary.helpers.Sections;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -26,6 +28,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	 */
 	private CharSequence mTitle;
 	private static Sections sections;
+	private ActionMap actionMap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +40,24 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+		
 		sections = new Sections(//
 				getResources().getStringArray(R.array.sections), // 
 				new int[] { R.layout.fragment_main, R.layout.form }, // 
-				new int[] { R.menu.main, R.menu.form});
+				new int[] { R.menu.list, R.menu.form});
 		
+		createActionList();
 	}
 
+	private void createActionList() {
+		actionMap = new ActionMap();
+		actionMap.append(R.id.menuItemSave, new SaveReportAction(this));
+	}
+
+	public ActionMap getActionMap() {
+		return actionMap;
+	}
+	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
@@ -53,7 +67,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 	public void onSectionAttached(int number) {
 		mTitle = sections.getTitles()[number - 1];
-		sections.setCurrentSession(number);
+		sections.setCurrentSession(number - 1);
 	}
 
 	public void restoreActionBar() {
@@ -87,7 +101,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -124,5 +138,6 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 			((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
 		}
 	}
+
 
 }
