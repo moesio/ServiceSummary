@@ -1,6 +1,7 @@
 package com.anowit.servicesummary.helpers;
 
 import android.content.Context;
+import android.widget.Toast;
 
 /**
  * @author moesio @ gmail.com
@@ -15,5 +16,6 @@ public class ActionMenu {
 	}
 
 	public void runAction() {
+		Toast.makeText(context, getClass().getSimpleName() + " must implement runAction", Toast.LENGTH_LONG).show();
 	}
 }

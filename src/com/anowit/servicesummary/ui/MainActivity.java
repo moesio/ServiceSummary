@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.anowit.servicesummary.actions.ClearListAction;
 import com.anowit.servicesummary.actions.SaveReportAction;
 import com.anowit.servicesummary.helpers.ActionMap;
 import com.anowit.servicesummary.helpers.Sections;
@@ -50,8 +51,9 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	}
 
 	private void createActionList() {
-		actionMap = new ActionMap();
+		actionMap = new ActionMap(this);
 		actionMap.append(R.id.menuItemSave, new SaveReportAction(this));
+//		actionMap.append(R.id.menuItemClear, new ClearListAction(this));
 	}
 
 	public ActionMap getActionMap() {
