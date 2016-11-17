@@ -1,11 +1,14 @@
 package com.anowit.servicesummary.ui;
 
- import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,14 +33,6 @@ public class ListFragment extends Fragment {
 	private ReportManagerImpl reportManager;
 	private List<Report> reportList = new ArrayList<Report>();
 	private ListView listView;
-
-	public ListView getListView() {
-		return listView;
-	}
-
-	public ReportManagerImpl getReportManager() {
-		return reportManager;
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -97,13 +92,20 @@ public class ListFragment extends Fragment {
 				viewHolder.txtStudies.setText(report.getStudies().toString());
 			}
 
+			int color;
+			if (position % 2 == 0) {
+				color = 0xccffffff;
+			} else {
+				color = 0x00ffffff;
+			}
+			convertView.setBackgroundColor(color);
+
 			return convertView;
 		}
 
 		@Override
 		public long getItemId(int position) {
-			reportList.get(position).getId();
-			return position;
+			return reportList.get(position).getId();
 		}
 
 		@Override
@@ -116,6 +118,12 @@ public class ListFragment extends Fragment {
 			return reportList.size();
 		}
 
+		@Override
+		public void notifyDataSetChanged() {
+			reportList = reportManager.list();
+			super.notifyDataSetChanged();
+		}
+
 	}
 
 	/**
@@ -125,8 +133,30 @@ public class ListFragment extends Fragment {
 	private class ClickItemListener implements OnItemClickListener {
 
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			Toast.makeText(parent.getContext(), ((Report) parent.getItemAtPosition(position)).getId().toString(), Toast.LENGTH_SHORT).show();
+		public void onItemClick(final AdapterView<?> parent, View view, int position, final long id) {
+
+			OnClickListener listener = new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					switch (which) {
+					case AlertDialog.BUTTON_POSITIVE:
+						reportManager.delete(id);
+						((BaseAdapter) parent.getAdapter()).notifyDataSetChanged();
+						break;
+					default:
+						break;
+					}
+				}
+			};
+
+			AlertDialog itemRemovalDialog = new AlertDialog.Builder(getActivity()).create();
+			itemRemovalDialog.setTitle(getActivity().getString(R.string.confirm));
+			itemRemovalDialog.setMessage(getActivity().getString(R.string.delete_one));
+			itemRemovalDialog.setButton(AlertDialog.BUTTON_POSITIVE, getActivity().getResources().getString(android.R.string.yes), listener);
+			itemRemovalDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getActivity().getResources().getString(android.R.string.no), listener);
+			itemRemovalDialog.show();
+
 		}
 
 	}

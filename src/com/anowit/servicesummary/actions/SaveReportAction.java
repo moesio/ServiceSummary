@@ -37,7 +37,7 @@ public class SaveReportAction extends ActionMenu {
 		Report report = createReport();
 		if (reportManager.create(report)) {
 			Toast.makeText(super.context, R.string.reportSaved, Toast.LENGTH_SHORT).show();
-			clearForm();
+//			clearForm();
 		}
 	}
 

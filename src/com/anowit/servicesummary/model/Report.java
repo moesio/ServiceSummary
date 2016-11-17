@@ -10,7 +10,7 @@ import com.seimos.android.dbhelper.database.BaseEntity;
 public class Report extends BaseEntity {
 	
 	@Id
-	private Integer id;
+	private Long id;
 	private String name;
 	private Double hours;
 	private Integer placements;
@@ -18,11 +18,11 @@ public class Report extends BaseEntity {
 	private Integer returnVisits;
 	private Integer studies;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public Report setId(Integer id) {
+	public Report setId(Long id) {
 		this.id = id;
 		return this;
 	}

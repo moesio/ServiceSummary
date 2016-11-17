@@ -28,5 +28,8 @@
     </string-array>
     <string-array name="table_upgrade">
     </string-array>
+    <string name="delete_all">Exclui todos os relatórios?</string>
+    <string name="confirm">Confirmação</string>
+    <string name="delete_one">Exclui relatório?</string>
     
 </resources>
