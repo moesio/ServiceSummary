@@ -1,5 +1,6 @@
 package com.anowit.servicesummary.model;
 
+import com.seimos.android.dbhelper.annotation.Id;
 import com.seimos.android.dbhelper.database.BaseEntity;
 
 /**
@@ -7,13 +8,24 @@ import com.seimos.android.dbhelper.database.BaseEntity;
  * @date Nov 13, 2016 2:51:07 PM
  */
 public class Report extends BaseEntity {
-
+	
+	@Id
+	private Integer id;
 	private String name;
 	private Double hours;
 	private Integer placements;
 	private Integer videoShowings;
 	private Integer returnVisits;
 	private Integer studies;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public Report setId(Integer id) {
+		this.id = id;
+		return this;
+	}
 
 	public String getName() {
 		return name;
@@ -69,12 +81,9 @@ public class Report extends BaseEntity {
 		return this;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.seimos.android.dbhelper.database.BaseEntity#toString()
-	 */
 	@Override
 	public String toString() {
-		return null;
+		return name;
 	}
 
 }

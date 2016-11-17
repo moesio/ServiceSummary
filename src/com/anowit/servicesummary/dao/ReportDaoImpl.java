@@ -11,9 +11,6 @@ import com.seimos.android.dbhelper.dao.GenericDaoImpl;
  */
 public class ReportDaoImpl extends GenericDaoImpl<Report> implements ReportDao {
 
-	/**
-	 * @param context
-	 */
 	public ReportDaoImpl(Context context) {
 		super(context);
 	}

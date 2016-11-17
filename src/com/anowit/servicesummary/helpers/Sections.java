@@ -1,5 +1,7 @@
 package com.anowit.servicesummary.helpers;
 
+import android.app.Fragment;
+
 /**
  * @author moesio @ gmail.com
  * @date Nov 5, 2016 11:02:07 AM
@@ -8,36 +10,41 @@ public class Sections {
 
 	private int currentSession;
 	private String[] titles;
-	private int[] layouts;
 	private int[] menus;
+	private Fragment[] fragments;
 
 	@SuppressWarnings("unused")
 	private Sections() {
 	}
 
-	public Sections(String[] titles, int[] layouts, int[] menus) {
+	public Sections(String[] titles, Fragment[] fragments, int[] menus) {
 		this.titles = titles;
-		if (layouts.length != titles.length) {
+		if (fragments.length != titles.length) {
 			throw new IllegalArgumentException("number of layouts different from number of sections");
 		} else {
-			this.layouts = layouts;
+			this.fragments = fragments;
 		}
 		this.menus = menus;
+	}
+
+	public void setCurrentSession(int currentSession) {
+		this.currentSession = currentSession;
 	}
 
 	public String[] getTitles() {
 		return titles;
 	}
-	
-	public void setCurrentSession(int currentSession) {
-		this.currentSession = currentSession;
-	}
 
-	public int getCurrentLayout() {
-		return layouts[currentSession];
+	public String getCurrentTitle() {
+		return titles[currentSession];
 	}
 
 	public int getCurrentMenuOption() {
 		return menus[currentSession];
 	}
+
+	public Fragment getCurrentFragment() {
+		return fragments[currentSession];
+	}
+
 }

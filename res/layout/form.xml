@@ -15,8 +15,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/name"
-            android:inputType="textCapWords" >
-
+            android:inputType="textCapWords"
+            android:text="Moésio Medeiros" >
         </EditText>
 
         <EditText
@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/hours"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:text="12" />
 
         <EditText
             android:id="@+id/editPlacements"
@@ -33,13 +34,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/placements"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:text="15" />
 
         <EditText
             android:id="@+id/editVideoShowing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:text="32"
             android:hint="@string/video_showing"
             android:inputType="numberDecimal" />
 
@@ -48,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:text="32"
             android:hint="@string/return_visits"
             android:inputType="numberDecimal" />
 
@@ -56,9 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:text="88"
             android:hint="@string/studies"
             android:inputType="numberDecimal" />
-
     </LinearLayout>
 
 </ScrollView>

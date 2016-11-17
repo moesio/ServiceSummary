@@ -24,9 +24,6 @@ public class ReportManagerImpl extends GenericManagerImpl<Report, ReportDao> imp
 		this.dao = new ReportDaoImpl(context);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.seimos.android.dbhelper.manager.GenericManagerImpl#getDao()
-	 */
 	@Override
 	public GenericDao<Report> getDao() {
 		return dao;
