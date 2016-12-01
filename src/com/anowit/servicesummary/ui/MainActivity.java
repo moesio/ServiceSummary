@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.anowit.servicesummary.actions.ClearListAction;
 import com.anowit.servicesummary.actions.SaveReportAction;
+import com.anowit.servicesummary.actions.SumAction;
 import com.anowit.servicesummary.helpers.ActionMap;
 import com.anowit.servicesummary.helpers.Sections;
 import com.seimos.android.dbhelper.database.DatabaseHelper;
@@ -32,6 +33,9 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+//		UncaughtExceptionHandler uncaughtExceptionHandler = new DefaultExceptionHandler();
+//		Thread.setDefaultUncaughtExceptionHandler(uncaughtExceptionHandler);
 
 		FormFragment formFragment = new FormFragment();
 		ListFragment listFragment = new ListFragment();
@@ -45,6 +49,8 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		actionMap = new ActionMap(this);
 		actionMap.append(R.id.menuItemClear, new ClearListAction(this));
 		actionMap.append(R.id.menuItemSave, new SaveReportAction(this));
+//		actionMap.append(R.id.menuUpload, new UploadAction(this));
+		actionMap.append(R.id.menuSum, new SumAction(this));
 
 		setContentView(R.layout.activity_main);
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -58,9 +64,9 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
+		sections.setCurrentSession(position);
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getFragmentManager();
-		sections.setCurrentSession(position);
 		fragmentManager.beginTransaction().replace(R.id.container, sections.getCurrentFragment()).commit();
 	}
 

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
+<!-- 
+    <item
+        android:id="@+id/menuUpload"
+        android:icon="@drawable/ic_file_upload_white_24dp"
+        android:showAsAction="ifRoom"
+        android:title="@string/share">
+    </item>
+ -->
+    <item
+        android:id="@+id/menuSum"
+        android:icon="@drawable/ic_sigma"
+        android:showAsAction="ifRoom"
+        android:title="@string/sum">
+    </item>
     <item
         android:id="@+id/menuItemClear"
         android:icon="@drawable/ic_delete_forever_white_24dp"

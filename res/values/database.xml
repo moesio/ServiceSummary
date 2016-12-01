@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="table_creation">
+        <item>CREATE TABLE IF NOT EXISTS report (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, profile CHAR(2) NOT NULL, name VARCHAR NOT NULL, hours INTEGER NOT NULL, placements INTEGER, videoShowings INTEGER, returnVisits INTEGER, studies INTEGER);</item>
+    </string-array>
+    <string-array name="table_upgrade">
+        <item>ALTER TABLE report add column profile char(2)</item>
+    </string-array>
+</resources>

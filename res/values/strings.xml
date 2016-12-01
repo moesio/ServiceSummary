@@ -22,14 +22,22 @@
     <string name="save">Salvar</string>
     <string name="clear">Limpar lista</string>
     <string name="reportSaved">Relatório guardado.</string>
-
-    <string-array name="table_creation">
-        <item>CREATE TABLE IF NOT EXISTS report (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR NOT NULL, hours INTEGER NOT NULL, placements INTEGER, videoShowings INTEGER, returnVisits INTEGER, studies INTEGER);</item>
-    </string-array>
-    <string-array name="table_upgrade">
-    </string-array>
     <string name="delete_all">Exclui todos os relatórios?</string>
     <string name="confirm">Confirmação</string>
     <string name="delete_one">Exclui relatório?</string>
-    
+    <string name="share">Compartilhar</string>
+    <string name="sum">Somatório</string>
+
+    <string-array name="profile">
+        <item>Publicador</item>
+        <item>Pioneiro auxiliar</item>
+        <item>Pioneiro regular</item>
+        <item>Pioneiro especial</item>
+    </string-array>
+
+    <string name="publisher">Publicadores</string>
+    <string name="auxiliary_pioneer">Pioneiros Auxiliares</string>
+    <string name="regular_pioneer">Pioneiros Regulares</string>
+    <string name="special_pioneer">Pioneiros Especiais</string>
+
 </resources>
