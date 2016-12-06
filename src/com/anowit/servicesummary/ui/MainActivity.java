@@ -12,10 +12,13 @@ import android.view.MenuItem;
 import com.anowit.servicesummary.actions.ClearListAction;
 import com.anowit.servicesummary.actions.SaveReportAction;
 import com.anowit.servicesummary.actions.SumAction;
+import com.anowit.servicesummary.actions.UploadAction;
 import com.anowit.servicesummary.helpers.ActionMap;
 import com.anowit.servicesummary.helpers.Sections;
 import com.seimos.android.dbhelper.database.DatabaseHelper;
+import com.seimos.android.dbhelper.database.DatabaseHelper.Patch;
 import com.seimos.android.dbhelper.database.DatabaseUtil;
+import com.seimos.android.dbhelper.util.Application;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -33,29 +36,46 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-//		UncaughtExceptionHandler uncaughtExceptionHandler = new DefaultExceptionHandler();
-//		Thread.setDefaultUncaughtExceptionHandler(uncaughtExceptionHandler);
 
+		// TODO Veriify global expetion handler
+		//		UncaughtExceptionHandler uncaughtExceptionHandler = new DefaultExceptionHandler();
+		//		Thread.setDefaultUncaughtExceptionHandler(uncaughtExceptionHandler);
+
+		initializeDatabase();
+		initializeSessions();
+		initializeMenuActions();
+
+		setContentView(R.layout.activity_main);
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+		// Set up the drawer.
+		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+	}
+
+	private void initializeMenuActions() {
+		actionMap = new ActionMap(this);
+		actionMap.append(R.id.menuItemClear, new ClearListAction(this));
+		actionMap.append(R.id.menuItemSave, new SaveReportAction(this));
+		actionMap.append(R.id.menuUpload, new UploadAction(this));
+		actionMap.append(R.id.menuSum, new SumAction(this));
+	}
+
+	private void initializeDatabase() {
+		Patch patches[] = new Patch[Application.getVersion(this)];
+		String[] forward = getResources().getStringArray(R.array.patches);
+		String[] rewind = getResources().getStringArray(R.array.unpatches);
+		for (int i = 0; i < patches.length; i++) {
+			patches[i] = new Patch(forward[i].split(";"), rewind[i].split(";"));
+		}
+		DatabaseUtil.instantiateDb(new DatabaseHelper(this, "service_summary", patches));
+	}
+
+	private void initializeSessions() {
 		FormFragment formFragment = new FormFragment();
 		ListFragment listFragment = new ListFragment();
 		sections = new Sections(//
 				getResources().getStringArray(R.array.sections), // 
 				new Fragment[] { listFragment, formFragment }, //
 				new int[] { R.menu.list, R.menu.form });
-
-		DatabaseUtil.instantiateDb(new DatabaseHelper(this, "service_summary", getResources().getStringArray(R.array.table_creation)));
-
-		actionMap = new ActionMap(this);
-		actionMap.append(R.id.menuItemClear, new ClearListAction(this));
-		actionMap.append(R.id.menuItemSave, new SaveReportAction(this));
-//		actionMap.append(R.id.menuUpload, new UploadAction(this));
-		actionMap.append(R.id.menuSum, new SumAction(this));
-
-		setContentView(R.layout.activity_main);
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
-		// Set up the drawer.
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
 	public ActionMap getActionMap() {

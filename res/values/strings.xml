@@ -13,6 +13,7 @@
     </string-array>
 
     <string name="name">Nome</string>
+    <string name="profile">Perfil</string>
     <string name="hours">Horas</string>
     <string name="placements">Colocações</string>
     <string name="video_showing">Vídeos mostrados</string>
@@ -28,7 +29,7 @@
     <string name="share">Compartilhar</string>
     <string name="sum">Somatório</string>
 
-    <string-array name="profile">
+    <string-array name="profile_list">
         <item>Publicador</item>
         <item>Pioneiro auxiliar</item>
         <item>Pioneiro regular</item>

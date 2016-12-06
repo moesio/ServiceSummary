@@ -3,6 +3,7 @@ package com.anowit.servicesummary.actions;
 import android.app.Activity;
 import android.content.Context;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.anowit.servicesummary.helpers.ActionMenu;
@@ -18,6 +19,7 @@ import com.seimos.android.dbhelper.factory.ManagerFactory;
 public class SaveReportAction extends ActionMenu {
 
 	private ReportManagerImpl reportManager;
+	private Spinner spinProfile;
 	private EditText editName;
 	private EditText editHours;
 	private EditText editPlacements;
@@ -37,12 +39,13 @@ public class SaveReportAction extends ActionMenu {
 		Report report = createReport();
 		if (reportManager.create(report)) {
 			Toast.makeText(super.context, R.string.reportSaved, Toast.LENGTH_SHORT).show();
-//			clearForm();
+			clearForm();
 		}
 	}
 
 	private void extractForm() {
 		Activity activity = (Activity) context;
+		spinProfile = (Spinner) activity.findViewById(R.id.spinProfile);
 		editName = (EditText) activity.findViewById(R.id.editName);
 		editHours = (EditText) ((Activity) context).findViewById(R.id.editHours);
 		editPlacements = (EditText) ((Activity) context).findViewById(R.id.editPlacements);
@@ -50,8 +53,9 @@ public class SaveReportAction extends ActionMenu {
 		editReturnVisit = (EditText) ((Activity) context).findViewById(R.id.editReturnVisit);
 		editStudies = (EditText) ((Activity) context).findViewById(R.id.editStudies);
 	}
-	
+
 	private void clearForm() {
+		spinProfile.setSelection(0);
 		editName.setText("");
 		editHours.setText("");
 		editPlacements.setText("");
@@ -62,11 +66,11 @@ public class SaveReportAction extends ActionMenu {
 
 	private Report createReport() {
 		String name = editName.getText().toString();
-		Double hours = Double.valueOf(editHours.getText().toString());
-		Integer placements = Integer.valueOf(editPlacements.getText().toString());
-		Integer videoShowings = Integer.valueOf(editVideoShowing.getText().toString());
-		Integer returnVisits = Integer.valueOf(editReturnVisit.getText().toString());
-		Integer studies = Integer.valueOf(editStudies.getText().toString());
+		Double hours = getValue(editHours, Double.class);
+		Integer placements = getValue(editPlacements, Integer.class);
+		Integer videoShowings = getValue(editVideoShowing, Integer.class);
+		Integer returnVisits = getValue(editReturnVisit, Integer.class);
+		Integer studies = getValue(editStudies, Integer.class);
 
 		Report report = new Report();
 		report.setName(name).setHours(hours).setPlacements(placements).setVideoShowings(videoShowings).setReturnVisits(returnVisits).setStudies(studies);
@@ -74,4 +78,16 @@ public class SaveReportAction extends ActionMenu {
 		return report;
 	}
 
+	private <T extends Number> T getValue(EditText edit, Class<T> clazz) {
+		T value = null;
+		try {
+			value = clazz.getConstructor(String.class).newInstance(edit.getText().toString());
+		} catch (Exception e) {
+			try {
+				value = clazz.getConstructor(String.class).newInstance("0");
+			} catch (Exception e1) {
+			}
+		}
+		return value;
+	}
 }

@@ -15,12 +15,10 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.PopupMenu;
 
 import com.anowit.servicesummary.helpers.ActionMenu;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
 import com.anowit.servicesummary.model.Report;
-import com.anowit.servicesummary.ui.R;
 import com.seimos.android.dbhelper.factory.ManagerFactory;
 import com.seimos.android.dbhelper.util.Application;
 
@@ -53,14 +51,11 @@ public class UploadAction extends ActionMenu {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			((Activity) context).startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		} else {
-			PopupMenu popupMenu = new PopupMenu(context, ((Activity) context).findViewById(R.id.reportList));
-
 			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 			
 			for (BluetoothDevice bluetoothDevice : pairedDevices) {
 				bluetoothDevice.getName();
 			}
-			popupMenu.show();
 		}
 	}
 
