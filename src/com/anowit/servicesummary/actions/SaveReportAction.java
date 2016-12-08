@@ -6,10 +6,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.helpers.ActionMenu;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
 import com.anowit.servicesummary.model.Report;
-import com.anowit.servicesummary.ui.R;
 import com.seimos.android.dbhelper.factory.ManagerFactory;
 
 /**

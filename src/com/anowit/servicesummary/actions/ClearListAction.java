@@ -10,10 +10,10 @@ import android.content.DialogInterface.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.helpers.ActionMenu;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
 import com.anowit.servicesummary.model.Report;
-import com.anowit.servicesummary.ui.R;
 import com.seimos.android.dbhelper.factory.ManagerFactory;
 
 /**

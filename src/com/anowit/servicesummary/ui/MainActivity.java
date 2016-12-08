@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.actions.ClearListAction;
 import com.anowit.servicesummary.actions.SaveReportAction;
 import com.anowit.servicesummary.actions.SumAction;

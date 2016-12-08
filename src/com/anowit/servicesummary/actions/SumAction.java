@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.helpers.ActionMenu;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
 import com.anowit.servicesummary.model.Report;
-import com.anowit.servicesummary.ui.R;
 import com.seimos.android.dbhelper.factory.ManagerFactory;
 
 /**

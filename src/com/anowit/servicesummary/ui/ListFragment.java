@@ -19,6 +19,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
 import com.anowit.servicesummary.model.Report;
 import com.seimos.android.dbhelper.factory.ManagerFactory;

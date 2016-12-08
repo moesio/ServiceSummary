@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.anowit.servicesummary.R;
+
 /**
  * @author moesio @ gmail.com
  * @date Nov 15, 2016 11:55:02 AM

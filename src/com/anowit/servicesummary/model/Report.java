@@ -13,8 +13,8 @@ public class Report extends BaseEntity {
 
 	@Id
 	private Long id;
-	@Enumerated(EnumType.CARDINAL)
-	private Profile profile;
+//	@Enumerated(EnumType.CARDINAL)
+//	private Profile profile;
 	private String name;
 	private Double hours;
 	private Integer placements;
@@ -31,14 +31,14 @@ public class Report extends BaseEntity {
 		return this;
 	}
 
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public Report setProfile(Profile profile) {
-		this.profile = profile;
-		return this;
-	}
+//	public Profile getProfile() {
+//		return profile;
+//	}
+//
+//	public Report setProfile(Profile profile) {
+//		this.profile = profile;
+//		return this;
+//	}
 
 	public String getName() {
 		return name;

@@ -1,14 +1,10 @@
 package com.anowit.servicesummary.ui;
 
-import com.anowit.servicesummary.adapters.TextWithIconArrayAdapter;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -21,9 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.anowit.servicesummary.R;
+import com.anowit.servicesummary.adapters.TextWithIconArrayAdapter;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
