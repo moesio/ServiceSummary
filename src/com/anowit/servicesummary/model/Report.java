@@ -1,9 +1,7 @@
 package com.anowit.servicesummary.model;
 
-import com.seimos.android.dbhelper.annotation.Enumerated;
-import com.seimos.android.dbhelper.annotation.Id;
-import com.seimos.android.dbhelper.database.BaseEntity;
-import com.seimos.android.dbhelper.database.EnumType;
+import com.seimos.android.dbhelper.criterion.BaseEntity;
+import com.seimos.android.dbhelper.persistence.Id;
 
 /**
  * @author moesio @ gmail.com

@@ -16,9 +16,8 @@ import com.anowit.servicesummary.actions.SumAction;
 import com.anowit.servicesummary.actions.UploadAction;
 import com.anowit.servicesummary.helpers.ActionMap;
 import com.anowit.servicesummary.helpers.Sections;
-import com.seimos.android.dbhelper.database.DatabaseHelper;
-import com.seimos.android.dbhelper.database.DatabaseHelper.Patch;
-import com.seimos.android.dbhelper.database.DatabaseUtil;
+import com.seimos.android.dbhelper.criterion.DatabaseHelper;
+import com.seimos.android.dbhelper.criterion.DatabaseHelper.Patch;
 import com.seimos.android.dbhelper.util.Application;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -61,13 +60,13 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	}
 
 	private void initializeDatabase() {
-		Patch patches[] = new Patch[Application.getVersion(this)];
+		Patch patches[] = new Patch[Application.getVersion(this) - 1];
 		String[] forward = getResources().getStringArray(R.array.patches);
 		String[] rewind = getResources().getStringArray(R.array.unpatches);
 		for (int i = 0; i < patches.length; i++) {
 			patches[i] = new Patch(forward[i].split(";"), rewind[i].split(";"));
 		}
-		DatabaseUtil.instantiateDb(new DatabaseHelper(this, "service_summary", patches));
+		new DatabaseHelper(this, "service_summary", getResources().getStringArray(R.array.initial), patches);
 	}
 
 	private void initializeSessions() {
