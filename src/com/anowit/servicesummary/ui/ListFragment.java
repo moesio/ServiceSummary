@@ -107,6 +107,20 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 					String[] stringArray = getResources().getStringArray(R.array.profile_abbreviation);
 					String profileAbbreviation = stringArray[ordinal];
 					viewHolder.txtProfileAbbreviation.setText(profileAbbreviation);
+					switch (profile) {
+					case PU:
+						viewHolder.txtProfileAbbreviation.setBackgroundColor(0x5d3c8900);
+						break;
+					case AP:
+						viewHolder.txtProfileAbbreviation.setBackgroundColor(0x89483c00);
+						break;
+					case RP:
+						viewHolder.txtProfileAbbreviation.setBackgroundColor(0x43893c00);
+						break;
+					case SP:
+						viewHolder.txtProfileAbbreviation.setBackgroundColor(0x3c588900);
+						break;
+					}
 				}
 				viewHolder.txtName.setText(report.getName());
 				viewHolder.txtHours.setText(String.format("%1$.2f", report.getHours()));

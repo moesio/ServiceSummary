@@ -13,8 +13,11 @@ import android.widget.TextView;
 import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.helpers.ActionMenu;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
+import com.anowit.servicesummary.model.Profile;
 import com.anowit.servicesummary.model.Report;
 import com.seimos.android.dbhelper.factory.ManagerFactory;
+import com.seimos.android.dbhelper.persistence.Filter;
+import com.seimos.android.dbhelper.persistence.Restriction;
 
 /**
  * @author moesio @ gmail.com
@@ -45,8 +48,7 @@ public class SumAction extends ActionMenu {
 	private void populateTotalsForPublishers(View layout) {
 		ReportManagerImpl manager = ManagerFactory.getManager(context, ReportManagerImpl.class);
 
-		// TODO Do it using manager.filter and sum as aggregated function
-		List<Report> list = manager.list();
+		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.PU.toString()));
 
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursPublisher);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsPublisher);
@@ -60,8 +62,7 @@ public class SumAction extends ActionMenu {
 	private void populateTotalsForAuxiliaryPioneer(View layout) {
 		ReportManagerImpl manager = ManagerFactory.getManager(context, ReportManagerImpl.class);
 
-		// TODO Do it using manager.filter and sum as aggregated function
-		List<Report> list = manager.list();
+		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.AP.toString()));
 
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursAuxiliaryPioneer);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsAuxiliaryPioneer);
@@ -75,8 +76,7 @@ public class SumAction extends ActionMenu {
 	private void populateTotalsForRegularPioneer(View layout) {
 		ReportManagerImpl manager = ManagerFactory.getManager(context, ReportManagerImpl.class);
 
-		// TODO Do it using manager.filter and sum as aggregated function
-		List<Report> list = manager.list();
+		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.RP.toString()));
 
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursRegularPioneer);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsRegularPioneer);
@@ -90,8 +90,7 @@ public class SumAction extends ActionMenu {
 	private void populateTotalsForSpecialPioneer(View layout) {
 		ReportManagerImpl manager = ManagerFactory.getManager(context, ReportManagerImpl.class);
 
-		// TODO Do it using manager.filter and sum as aggregated function
-		List<Report> list = manager.list();
+		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.SP.toString()));
 
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursSpecialPioneer);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsSpecialPioneer);
