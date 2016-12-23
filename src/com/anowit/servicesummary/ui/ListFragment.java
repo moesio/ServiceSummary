@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -173,6 +174,28 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 		@Override
 		public void onItemClick(final AdapterView<?> parent, View view, int position, final long id) {
 
+			LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View layout = inflater.inflate(R.layout.details, (ViewGroup) ((Activity) getActivity()).findViewById(R.id.detailsDialog));
+
+			final AlertDialog itemDetail = new AlertDialog.Builder(getActivity()).create();
+			itemDetail.setView(layout);
+			TextView txtViewName = (TextView) layout.findViewById(R.id.textViewName);
+			TextView txtViewHours = (TextView) layout.findViewById(R.id.textViewTotalHours);
+			TextView txtViewPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacements);
+			TextView txtViewVideoShowing = (TextView) layout.findViewById(R.id.textViewTotalVideoShowing);
+			TextView txtViewReturnVisits = (TextView) layout.findViewById(R.id.textViewTotalReturnVisits);
+			TextView txtViewStudies = (TextView) layout.findViewById(R.id.textViewTotalStudies);
+			ImageButton btnDelete = (ImageButton) layout.findViewById(R.id.btnDelete);
+
+			Report report = reportManager.retrieve(id);
+
+			txtViewName.setText(report.getName());
+			txtViewHours.setText(String.format("%1$.2f", report.getHours()));
+			txtViewPlacements.setText(report.getPlacements().toString());
+			txtViewVideoShowing.setText(report.getVideoShowings().toString());
+			txtViewReturnVisits.setText(report.getReturnVisits().toString());
+			txtViewStudies.setText(report.getStudies().toString());
+
 			OnClickListener listener = new OnClickListener() {
 
 				@Override
@@ -180,6 +203,7 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 					switch (which) {
 					case AlertDialog.BUTTON_POSITIVE:
 						reportManager.delete(id);
+						itemDetail.dismiss();
 						((BaseAdapter) parent.getAdapter()).notifyDataSetChanged();
 						break;
 					default:
@@ -188,13 +212,21 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 				}
 			};
 
-			AlertDialog itemRemovalDialog = new AlertDialog.Builder(getActivity()).create();
-			itemRemovalDialog.setTitle(getActivity().getString(R.string.confirm));
-			itemRemovalDialog.setMessage(getActivity().getString(R.string.delete_one));
-			itemRemovalDialog.setButton(AlertDialog.BUTTON_POSITIVE, getActivity().getResources().getString(android.R.string.yes), listener);
-			itemRemovalDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getActivity().getResources().getString(android.R.string.no), listener);
-			itemRemovalDialog.show();
+			final AlertDialog confirmDeleteAlert = new AlertDialog.Builder(getActivity()).create();
+			confirmDeleteAlert.setMessage(getActivity().getResources().getString(R.string.delete_one));
+			confirmDeleteAlert.setButton(AlertDialog.BUTTON_POSITIVE, getActivity().getResources().getString(android.R.string.yes), listener);
+			confirmDeleteAlert.setButton(AlertDialog.BUTTON_NEGATIVE, getActivity().getResources().getString(android.R.string.no), listener);
 
+			android.view.View.OnClickListener a = new android.view.View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					confirmDeleteAlert.show();
+				}
+			};
+			btnDelete.setOnClickListener(a);
+			
+			itemDetail.show();
 		}
 
 	}

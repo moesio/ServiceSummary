@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// TODO Veriify global expetion handler
+		// TODO Try global exception handler
 		//		UncaughtExceptionHandler uncaughtExceptionHandler = new DefaultExceptionHandler();
 		//		Thread.setDefaultUncaughtExceptionHandler(uncaughtExceptionHandler);
 
