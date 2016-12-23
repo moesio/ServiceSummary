@@ -1,6 +1,8 @@
 package com.anowit.servicesummary.model;
 
-import com.seimos.android.dbhelper.criterion.BaseEntity;
+import com.seimos.android.dbhelper.persistence.BaseEntity;
+import com.seimos.android.dbhelper.persistence.EnumType;
+import com.seimos.android.dbhelper.persistence.Enumerated;
 import com.seimos.android.dbhelper.persistence.Id;
 
 /**
@@ -11,8 +13,8 @@ public class Report extends BaseEntity {
 
 	@Id
 	private Long id;
-//	@Enumerated(EnumType.CARDINAL)
-//	private Profile profile;
+	@Enumerated(EnumType.STRING)
+	private Profile profile;
 	private String name;
 	private Double hours;
 	private Integer placements;
@@ -29,14 +31,14 @@ public class Report extends BaseEntity {
 		return this;
 	}
 
-//	public Profile getProfile() {
-//		return profile;
-//	}
-//
-//	public Report setProfile(Profile profile) {
-//		this.profile = profile;
-//		return this;
-//	}
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public Report setProfile(Profile profile) {
+		this.profile = profile;
+		return this;
+	}
 
 	public String getName() {
 		return name;

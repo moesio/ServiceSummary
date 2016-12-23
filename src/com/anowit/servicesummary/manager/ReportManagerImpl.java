@@ -1,5 +1,7 @@
 package com.anowit.servicesummary.manager;
 
+import java.util.List;
+
 import android.content.Context;
 
 import com.anowit.servicesummary.dao.ReportDao;
@@ -7,6 +9,8 @@ import com.anowit.servicesummary.dao.ReportDaoImpl;
 import com.anowit.servicesummary.model.Report;
 import com.seimos.android.dbhelper.dao.GenericDao;
 import com.seimos.android.dbhelper.manager.GenericManagerImpl;
+import com.seimos.android.dbhelper.persistence.Filter;
+import com.seimos.android.dbhelper.persistence.Order;
 
 /**
  * @author moesio @ gmail.com
@@ -29,4 +33,8 @@ public class ReportManagerImpl extends GenericManagerImpl<Report, ReportDao> imp
 		return dao;
 	}
 
+	@Override
+	public List<Report> list() {
+		return super.filter(new Filter("name", Order.ASC));
+	}
 }

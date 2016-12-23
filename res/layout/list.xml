@@ -3,15 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ListFragment"
-    tools:listitem="@layout/list_item" 
-    android:orientation="vertical" >
+    tools:listitem="@layout/list_item" >
 
-    <ListView
-        android:padding="5dp"
-        android:id="@+id/reportList"
+    <LinearLayout
+        style="@style/MyActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/imgHours"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/hours"
+            android:src="@drawable/ic_watch_later_white_24dp" />
+
+        <ImageView
+            android:id="@+id/imgPlacements"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/placements"
+            android:src="@drawable/ic_import_contacts_white_24dp" />
+
+        <ImageView
+            android:id="@+id/imgVideoShowing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/video_showing"
+            android:src="@drawable/ic_subscriptions_white_24dp" />
+
+        <ImageView
+            android:id="@+id/imgReturnVisits"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/return_visits"
+            android:src="@drawable/ic_touch_app_white_24dp" />
+
+        <ImageView
+            android:id="@+id/imgStudies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/studies"
+            android:src="@drawable/ic_contact_mail_white_24dp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/reportList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" >
     </ListView>
 
 </LinearLayout>

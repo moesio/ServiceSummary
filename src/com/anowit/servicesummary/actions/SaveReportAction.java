@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.helpers.ActionMenu;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
+import com.anowit.servicesummary.model.Profile;
 import com.anowit.servicesummary.model.Report;
 import com.seimos.android.dbhelper.factory.ManagerFactory;
 
@@ -37,7 +38,7 @@ public class SaveReportAction extends ActionMenu {
 
 		reportManager = ManagerFactory.getManager(context, ReportManagerImpl.class);
 		Report report = createReport();
-		if (reportManager.create(report)) {
+		if (reportManager.create(report) > 0) {
 			Toast.makeText(super.context, R.string.reportSaved, Toast.LENGTH_SHORT).show();
 			clearForm();
 		}
@@ -55,17 +56,34 @@ public class SaveReportAction extends ActionMenu {
 	}
 
 	private void clearForm() {
-		spinProfile.setSelection(0);
-		editName.setText("");
-		editHours.setText("");
-		editPlacements.setText("");
-		editVideoShowing.setText("");
-		editReturnVisit.setText("");
-		editStudies.setText("");
+//		spinProfile.setSelection(0);
+//		editName.setText("");
+//		editHours.setText("");
+//		editPlacements.setText("");
+//		editVideoShowing.setText("");
+//		editReturnVisit.setText("");
+//		editStudies.setText("");
 	}
 
 	private Report createReport() {
 		String name = editName.getText().toString();
+		int profilePositiion = spinProfile.getSelectedItemPosition();
+		Profile profile = null;
+		switch (profilePositiion) {
+		case 0:
+			profile = Profile.PU;
+			break;
+		case 1:
+			profile = Profile.AP;
+			break;
+		case 2:
+			profile = Profile.RP;
+			break;
+		case 3:
+			profile = Profile.SP;
+			break;
+		}
+
 		Double hours = getValue(editHours, Double.class);
 		Integer placements = getValue(editPlacements, Integer.class);
 		Integer videoShowings = getValue(editVideoShowing, Integer.class);
@@ -73,7 +91,7 @@ public class SaveReportAction extends ActionMenu {
 		Integer studies = getValue(editStudies, Integer.class);
 
 		Report report = new Report();
-		report.setName(name).setHours(hours).setPlacements(placements).setVideoShowings(videoShowings).setReturnVisits(returnVisits).setStudies(studies);
+		report.setName(name).setProfile(profile).setHours(hours).setPlacements(placements).setVideoShowings(videoShowings).setReturnVisits(returnVisits).setStudies(studies);
 
 		return report;
 	}

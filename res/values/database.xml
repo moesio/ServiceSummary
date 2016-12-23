@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="initial">
-        <item>CREATE TABLE IF NOT EXISTS report (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, profile CHAR(2) NOT NULL, name VARCHAR NOT NULL, hours INTEGER NOT NULL, placements INTEGER, videoShowings INTEGER, returnVisits INTEGER, studies INTEGER);</item>
+        <item>CREATE TABLE IF NOT EXISTS report (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, profile TEXT NOT NULL CHECK (profile in (\'PU\', \'AP\', \'RP\', \'SP\')) DEFAULT \'PU\', name VARCHAR NOT NULL, hours INTEGER NOT NULL, placements INTEGER, videoShowings INTEGER, returnVisits INTEGER, studies INTEGER);</item>
     </string-array>
     <string-array name="patches">
-        <item>ALTER TABLE report add column profile char(2) check (profile in (\'PU\', \'AP\', \'RP\', \'SP\'); </item>
     </string-array>
     <string-array name="unpatches">
-        <item>ALTER TABLE report drop column profile; </item>
     </string-array>
 </resources>

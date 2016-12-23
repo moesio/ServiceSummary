@@ -16,8 +16,8 @@ import com.anowit.servicesummary.actions.SumAction;
 import com.anowit.servicesummary.actions.UploadAction;
 import com.anowit.servicesummary.helpers.ActionMap;
 import com.anowit.servicesummary.helpers.Sections;
-import com.seimos.android.dbhelper.criterion.DatabaseHelper;
-import com.seimos.android.dbhelper.criterion.DatabaseHelper.Patch;
+import com.seimos.android.dbhelper.persistence.DatabaseHelper;
+import com.seimos.android.dbhelper.persistence.DatabaseHelper.Patch;
 import com.seimos.android.dbhelper.util.Application;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {

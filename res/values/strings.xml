@@ -35,6 +35,13 @@
         <item>Pioneiro regular</item>
         <item>Pioneiro especial</item>
     </string-array>
+    
+    <string-array name="profile_abbreviation">
+        <item>PU</item>
+        <item>PA</item>
+        <item>PR</item>
+        <item>PE</item>
+    </string-array>
 
     <string name="publisher">Publicadores</string>
     <string name="auxiliary_pioneer">Pioneiros Auxiliares</string>
