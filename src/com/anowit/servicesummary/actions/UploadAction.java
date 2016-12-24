@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
@@ -16,9 +17,11 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 
+import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.helpers.ActionMenu;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
 import com.anowit.servicesummary.model.Report;
+import com.anowit.servicesummary.ui.MainActivity;
 import com.seimos.android.dbhelper.factory.ManagerFactory;
 import com.seimos.android.dbhelper.util.Application;
 
@@ -51,11 +54,11 @@ public class UploadAction extends ActionMenu {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			((Activity) context).startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		} else {
-			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-			
-			for (BluetoothDevice bluetoothDevice : pairedDevices) {
-				bluetoothDevice.getName();
-			}
+//			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+//
+//			for (BluetoothDevice bluetoothDevice : pairedDevices) {
+//				bluetoothDevice.getName();
+//			}
 		}
 	}
 

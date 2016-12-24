@@ -35,7 +35,6 @@
         <item>Pioneiro regular</item>
         <item>Pioneiro especial</item>
     </string-array>
-    
     <string-array name="profile_abbreviation">
         <item>PU</item>
         <item>PA</item>
@@ -48,5 +47,7 @@
     <string name="regular_pioneer">Pioneiros Regulares</string>
     <string name="special_pioneer">Pioneiros Especiais</string>
     <string name="dash_separator">" - "</string>
+    <string name="title_activity_bluetooth_activiy">BluetoothActiviy</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

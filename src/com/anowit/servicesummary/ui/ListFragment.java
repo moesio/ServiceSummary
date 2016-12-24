@@ -3,12 +3,9 @@ package com.anowit.servicesummary.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -63,12 +59,12 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 	}
 
 	@Override
-	public void onAttach(Activity activity) {
+	public void onResume() {
 		reportManager = ManagerFactory.getManager(this.getActivity(), ReportManagerImpl.class);
 		reportList = reportManager.list();
-		super.onAttach(activity);
+		super.onResume();
 	}
-
+	
 	/**
 	 * @author moesio @ gmail.com
 	 * @date Nov 15, 2016 1:09:11 PM
@@ -174,59 +170,9 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 		@Override
 		public void onItemClick(final AdapterView<?> parent, View view, int position, final long id) {
 
-			LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			View layout = inflater.inflate(R.layout.details, (ViewGroup) ((Activity) getActivity()).findViewById(R.id.detailsDialog));
+			FragmentManager fragmentManager = getActivity().getFragmentManager();
+			fragmentManager.beginTransaction().replace(R.id.container, new DetailFragment(id)).addToBackStack(null).commit();
 
-			final AlertDialog itemDetail = new AlertDialog.Builder(getActivity()).create();
-			itemDetail.setView(layout);
-			TextView txtViewName = (TextView) layout.findViewById(R.id.textViewName);
-			TextView txtViewHours = (TextView) layout.findViewById(R.id.textViewTotalHours);
-			TextView txtViewPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacements);
-			TextView txtViewVideoShowing = (TextView) layout.findViewById(R.id.textViewTotalVideoShowing);
-			TextView txtViewReturnVisits = (TextView) layout.findViewById(R.id.textViewTotalReturnVisits);
-			TextView txtViewStudies = (TextView) layout.findViewById(R.id.textViewTotalStudies);
-			ImageButton btnDelete = (ImageButton) layout.findViewById(R.id.btnDelete);
-
-			Report report = reportManager.retrieve(id);
-
-			txtViewName.setText(report.getName());
-			txtViewHours.setText(String.format("%1$.2f", report.getHours()));
-			txtViewPlacements.setText(report.getPlacements().toString());
-			txtViewVideoShowing.setText(report.getVideoShowings().toString());
-			txtViewReturnVisits.setText(report.getReturnVisits().toString());
-			txtViewStudies.setText(report.getStudies().toString());
-
-			OnClickListener listener = new OnClickListener() {
-
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					switch (which) {
-					case AlertDialog.BUTTON_POSITIVE:
-						reportManager.delete(id);
-						itemDetail.dismiss();
-						((BaseAdapter) parent.getAdapter()).notifyDataSetChanged();
-						break;
-					default:
-						break;
-					}
-				}
-			};
-
-			final AlertDialog confirmDeleteAlert = new AlertDialog.Builder(getActivity()).create();
-			confirmDeleteAlert.setMessage(getActivity().getResources().getString(R.string.delete_one));
-			confirmDeleteAlert.setButton(AlertDialog.BUTTON_POSITIVE, getActivity().getResources().getString(android.R.string.yes), listener);
-			confirmDeleteAlert.setButton(AlertDialog.BUTTON_NEGATIVE, getActivity().getResources().getString(android.R.string.no), listener);
-
-			android.view.View.OnClickListener a = new android.view.View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					confirmDeleteAlert.show();
-				}
-			};
-			btnDelete.setOnClickListener(a);
-			
-			itemDetail.show();
 		}
 
 	}

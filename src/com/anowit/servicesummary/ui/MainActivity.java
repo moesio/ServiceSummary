@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.actions.ClearListAction;
+import com.anowit.servicesummary.actions.DeleteAction;
 import com.anowit.servicesummary.actions.SaveReportAction;
 import com.anowit.servicesummary.actions.SumAction;
 import com.anowit.servicesummary.actions.UploadAction;
@@ -75,11 +76,21 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		sections = new Sections(//
 				getResources().getStringArray(R.array.sections), // 
 				new Fragment[] { listFragment, formFragment }, //
-				new int[] { R.menu.list, R.menu.form });
+				new Integer[] { R.menu.list, R.menu.form });
 	}
 
 	public ActionMap getActionMap() {
 		return actionMap;
+	}
+
+	@Override
+	public void onBackPressed() {
+		FragmentManager fm = getFragmentManager();
+		if (fm.getBackStackEntryCount() > 0) {
+			fm.popBackStack();
+		} else {
+			super.onBackPressed();
+		}
 	}
 
 	@Override
@@ -103,7 +114,12 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 			// Only show items in the action bar relevant to this screen
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
-			getMenuInflater().inflate(sections.getCurrentMenuOption(), menu);
+			Integer currentMenuOption = sections.getCurrentMenuOption();
+			if (currentMenuOption == null) {
+				menu.clear();
+			} else {
+				getMenuInflater().inflate(currentMenuOption, menu);
+			}
 			restoreActionBar();
 			return true;
 		}

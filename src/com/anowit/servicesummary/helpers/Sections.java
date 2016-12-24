@@ -10,14 +10,14 @@ public class Sections {
 
 	private int currentSession;
 	private String[] titles;
-	private int[] menus;
+	private Integer[] menus;
 	private Fragment[] fragments;
 
 	@SuppressWarnings("unused")
 	private Sections() {
 	}
 
-	public Sections(String[] titles, Fragment[] fragments, int[] menus) {
+	public Sections(String[] titles, Fragment[] fragments, Integer[] menus) {
 		this.titles = titles;
 		if (fragments.length != titles.length) {
 			throw new IllegalArgumentException("number of layouts different from number of sections");
@@ -39,7 +39,7 @@ public class Sections {
 		return titles[currentSession];
 	}
 
-	public int getCurrentMenuOption() {
+	public Integer getCurrentMenuOption() {
 		return menus[currentSession];
 	}
 
