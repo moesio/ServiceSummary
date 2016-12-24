@@ -23,17 +23,14 @@ public class TextWithIconArrayAdapter<T> extends ArrayAdapter<T> {
 		this.mIcons = icons;
 	}
 
-	/* (non-Javadoc)
-	 * @see android.widget.ArrayAdapter#getView(int, android.view.View, android.view.ViewGroup)
-	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = super.getView(position, convertView, parent);
-		
-        TextView text = (TextView) view.findViewById(mFieldId);
-        text.setCompoundDrawablesWithIntrinsicBounds(mIcons[position], 0, 0, 0);
-//        text.setCompoundDrawablesRelativeWithIntrinsicBounds(mIcons[position], 0, 0, 0);
-        
+
+		TextView text = (TextView) view.findViewById(mFieldId);
+		text.setCompoundDrawablesWithIntrinsicBounds(mIcons[position], 0, 0, 0);
+
 		return view;
 	}
+
 }

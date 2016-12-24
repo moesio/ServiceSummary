@@ -47,5 +47,6 @@
     <string name="auxiliary_pioneer">Pioneiros Auxiliares</string>
     <string name="regular_pioneer">Pioneiros Regulares</string>
     <string name="special_pioneer">Pioneiros Especiais</string>
+    <string name="dash_separator">" - "</string>
 
 </resources>

@@ -50,12 +50,14 @@ public class SumAction extends ActionMenu {
 
 		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.PU.toString()));
 
+		TextView textViewTotalPublishers = (TextView) layout.findViewById(R.id.textViewTotalPublishers);
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursPublisher);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsPublisher);
 		TextView textViewTotalVideoShowing = (TextView) layout.findViewById(R.id.textViewTotalVideoShowingPublisher);
 		TextView textViewTotalReturnVisits = (TextView) layout.findViewById(R.id.textViewTotalReturnVisitsPublisher);
 		TextView textViewTotalStudies = (TextView) layout.findViewById(R.id.textViewTotalStudiesPublisher);
 
+		textViewTotalPublishers.setText(Integer.toString(list.size()));
 		populateFieldsFromList(list, textViewTotalHours, textViewTotalPlacements, textViewTotalVideoShowing, textViewTotalReturnVisits, textViewTotalStudies);
 	}
 
@@ -64,12 +66,14 @@ public class SumAction extends ActionMenu {
 
 		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.AP.toString()));
 
+		TextView textViewTotalAuxiliaryPioneer = (TextView) layout.findViewById(R.id.textViewTotalAuxiliaryPioneer);
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursAuxiliaryPioneer);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsAuxiliaryPioneer);
 		TextView textViewTotalVideoShowing = (TextView) layout.findViewById(R.id.textViewTotalVideoShowingAuxiliaryPioneer);
 		TextView textViewTotalReturnVisits = (TextView) layout.findViewById(R.id.textViewTotalReturnVisitsAuxiliaryPioneer);
 		TextView textViewTotalStudies = (TextView) layout.findViewById(R.id.textViewTotalStudiesAuxiliaryPioneer);
 
+		textViewTotalAuxiliaryPioneer.setText(Integer.toString(list.size()));
 		populateFieldsFromList(list, textViewTotalHours, textViewTotalPlacements, textViewTotalVideoShowing, textViewTotalReturnVisits, textViewTotalStudies);
 	}
 
@@ -78,12 +82,14 @@ public class SumAction extends ActionMenu {
 
 		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.RP.toString()));
 
+		TextView textViewTotalRegularPioneer = (TextView) layout.findViewById(R.id.textViewTotalRegularPioneer);
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursRegularPioneer);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsRegularPioneer);
 		TextView textViewTotalVideoShowing = (TextView) layout.findViewById(R.id.textViewTotalVideoShowingRegularPioneer);
 		TextView textViewTotalReturnVisits = (TextView) layout.findViewById(R.id.textViewTotalReturnVisitsRegularPioneer);
 		TextView textViewTotalStudies = (TextView) layout.findViewById(R.id.textViewTotalStudiesRegularPioneer);
 
+		textViewTotalRegularPioneer.setText(Integer.toString(list.size()));
 		populateFieldsFromList(list, textViewTotalHours, textViewTotalPlacements, textViewTotalVideoShowing, textViewTotalReturnVisits, textViewTotalStudies);
 	}
 
@@ -92,12 +98,14 @@ public class SumAction extends ActionMenu {
 
 		List<Report> list = manager.filter(new Filter("profile", Restriction.EQ, Profile.SP.toString()));
 
+		TextView textViewTotalSpecialPioneer = (TextView) layout.findViewById(R.id.textViewTotalSpecialPioneer);
 		TextView textViewTotalHours = (TextView) layout.findViewById(R.id.textViewTotalHoursSpecialPioneer);
 		TextView textViewTotalPlacements = (TextView) layout.findViewById(R.id.textViewTotalPlacementsSpecialPioneer);
 		TextView textViewTotalVideoShowing = (TextView) layout.findViewById(R.id.textViewTotalVideoShowingSpecialPioneer);
 		TextView textViewTotalReturnVisits = (TextView) layout.findViewById(R.id.textViewTotalReturnVisitsSpecialPioneer);
 		TextView textViewTotalStudies = (TextView) layout.findViewById(R.id.textViewTotalStudiesSpecialPioneer);
 
+		textViewTotalSpecialPioneer.setText(Integer.toString(list.size()));
 		populateFieldsFromList(list, textViewTotalHours, textViewTotalPlacements, textViewTotalVideoShowing, textViewTotalReturnVisits, textViewTotalStudies);
 	}
 
