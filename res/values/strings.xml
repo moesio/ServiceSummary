@@ -9,7 +9,7 @@
 
     <string-array name="sections">
         <item>Lista de relatórios</item>
-        <item>Gravar relatório</item>
+        <item>Resumos por perfil</item>
     </string-array>
 
     <string name="name">Nome</string>
@@ -49,5 +49,6 @@
     <string name="dash_separator">" - "</string>
     <string name="title_activity_bluetooth_activiy">BluetoothActiviy</string>
     <string name="hello_world">Hello world!</string>
+    <string name="save_error">Não foi gravar o relatório. Os dados estão preechidos?</string>
 
 </resources>

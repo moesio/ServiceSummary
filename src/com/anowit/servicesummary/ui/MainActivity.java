@@ -10,10 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.anowit.servicesummary.R;
+import com.anowit.servicesummary.actions.AddReportAction;
 import com.anowit.servicesummary.actions.ClearListAction;
-import com.anowit.servicesummary.actions.DeleteAction;
 import com.anowit.servicesummary.actions.SaveReportAction;
-import com.anowit.servicesummary.actions.SumAction;
 import com.anowit.servicesummary.actions.UploadAction;
 import com.anowit.servicesummary.helpers.ActionMap;
 import com.anowit.servicesummary.helpers.Sections;
@@ -57,7 +56,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		actionMap.append(R.id.menuItemClear, new ClearListAction(this));
 		actionMap.append(R.id.menuItemSave, new SaveReportAction(this));
 		actionMap.append(R.id.menuUpload, new UploadAction(this));
-		actionMap.append(R.id.menuSum, new SumAction(this));
+		actionMap.append(R.id.menuSum, new AddReportAction(this));
 	}
 
 	private void initializeDatabase() {
@@ -71,12 +70,12 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 	}
 
 	private void initializeSessions() {
-		FormFragment formFragment = new FormFragment();
 		ListFragment listFragment = new ListFragment();
+		SummaryFragment formFragment = new SummaryFragment();
 		sections = new Sections(//
 				getResources().getStringArray(R.array.sections), // 
 				new Fragment[] { listFragment, formFragment }, //
-				new Integer[] { R.menu.list, R.menu.form });
+				new Integer[] { R.menu.list, null });
 	}
 
 	public ActionMap getActionMap() {
@@ -88,6 +87,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		FragmentManager fm = getFragmentManager();
 		if (fm.getBackStackEntryCount() > 0) {
 			fm.popBackStack();
+			restoreActionBar();
 		} else {
 			super.onBackPressed();
 		}

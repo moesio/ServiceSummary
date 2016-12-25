@@ -34,6 +34,18 @@ public class ReportManagerImpl extends GenericManagerImpl<Report, ReportDao> imp
 	}
 
 	@Override
+	public long create(Report entity) {
+		try {
+			if (entity.getName().isEmpty() || entity.getHours() == 0) {
+				return -1;
+			}
+		} catch (NullPointerException e) {
+			return -1;
+		}
+		return super.create(entity);
+	}
+
+	@Override
 	public List<Report> list() {
 		return super.filter(new Filter("name", Order.ASC));
 	}

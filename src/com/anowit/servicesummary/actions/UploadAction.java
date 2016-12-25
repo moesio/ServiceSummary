@@ -54,24 +54,12 @@ public class UploadAction extends ActionMenu {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			((Activity) context).startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		} else {
-//			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-//
-//			for (BluetoothDevice bluetoothDevice : pairedDevices) {
-//				bluetoothDevice.getName();
-//			}
-		}
-	}
+			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 
-	private List<Report> getReportList() {
-		if (reportList == null) {
-			createReportList();
+			for (BluetoothDevice bluetoothDevice : pairedDevices) {
+				bluetoothDevice.getName();
+			}
 		}
-		return reportList;
-	}
-
-	private String createReportList() {
-		reportList = ManagerFactory.getManager(context, ReportManagerImpl.class).list();
-		return reportList.toString();
 	}
 
 	private class AcceptThread extends Thread {
