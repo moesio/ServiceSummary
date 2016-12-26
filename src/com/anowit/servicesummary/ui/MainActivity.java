@@ -84,10 +84,10 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 
 	@Override
 	public void onBackPressed() {
-		FragmentManager fm = getFragmentManager();
-		if (fm.getBackStackEntryCount() > 0) {
-			fm.popBackStack();
-			restoreActionBar();
+		FragmentManager fragmentManager = getFragmentManager();
+		int backStackEntryCount = fragmentManager.getBackStackEntryCount();
+		if (backStackEntryCount > 0) {
+			fragmentManager.popBackStack();
 		} else {
 			super.onBackPressed();
 		}
@@ -98,7 +98,11 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		sections.setCurrentSession(position);
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.container, sections.getCurrentFragment()).commit();
+		if (fragmentManager.getBackStackEntryCount() == 0) {
+			fragmentManager.beginTransaction().replace(R.id.container, sections.getCurrentFragment()).commit();
+		} else {
+			fragmentManager.beginTransaction().replace(R.id.container, sections.getCurrentFragment()).addToBackStack(null).commit();
+		}
 	}
 
 	public void restoreActionBar() {

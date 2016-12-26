@@ -1,5 +1,6 @@
 package com.anowit.servicesummary.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -33,10 +34,10 @@ public class DetailFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		setHasOptionsMenu(true);
-
+		
 		ActionMap actionMap = ((MainActivity) getActivity()).getActionMap();
 		actionMap.append(R.id.menuDelete, new DeleteAction(getActivity(), id));
-
+		
 		View layout = inflater.inflate(R.layout.details, (ViewGroup) ((Activity) getActivity()).findViewById(R.id.detailsDialog));
 
 		TextView txtViewName = (TextView) layout.findViewById(R.id.textViewName);
@@ -59,17 +60,12 @@ public class DetailFragment extends Fragment {
 	}
 
 	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-
-		//		back((BaseAdapter) parent.getAdapter()).notifyDataSetChanged();
-
-	}
-
-	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.clear();
 		inflater.inflate(R.menu.detail, menu);
+		ActionBar actionBar = getActivity().getActionBar();
+		actionBar.setDisplayShowTitleEnabled(true);
+		actionBar.setTitle(R.string.individual_report);
 	}
 
 	public ReportManagerImpl getReportManager() {

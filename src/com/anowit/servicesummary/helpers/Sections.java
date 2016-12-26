@@ -31,10 +31,6 @@ public class Sections {
 		this.currentSession = currentSession;
 	}
 
-	public String[] getTitles() {
-		return titles;
-	}
-
 	public String getCurrentTitle() {
 		return titles[currentSession];
 	}

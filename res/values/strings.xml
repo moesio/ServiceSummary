@@ -9,7 +9,7 @@
 
     <string-array name="sections">
         <item>Lista de relatórios</item>
-        <item>Resumos por perfil</item>
+        <item>Totais por perfil</item>
     </string-array>
 
     <string name="name">Nome</string>
@@ -27,7 +27,9 @@
     <string name="confirm">Confirmação</string>
     <string name="delete_one">Exclui relatório?</string>
     <string name="share">Compartilhar</string>
+    <string name="save_error">Não foi gravar o relatório. Os dados estão preechidos?</string>
     <string name="sum">Somatório</string>
+    <string name="individual_report">Relatório individual</string>
 
     <string-array name="profile_list">
         <item>Publicador</item>
@@ -49,6 +51,6 @@
     <string name="dash_separator">" - "</string>
     <string name="title_activity_bluetooth_activiy">BluetoothActiviy</string>
     <string name="hello_world">Hello world!</string>
-    <string name="save_error">Não foi gravar o relatório. Os dados estão preechidos?</string>
+    <string name="add_report">Adicionar relatório</string>
 
 </resources>

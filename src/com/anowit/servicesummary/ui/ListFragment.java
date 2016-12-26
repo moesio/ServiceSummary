@@ -13,10 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.manager.ReportManagerImpl;
@@ -28,7 +26,7 @@ import com.seimos.android.dbhelper.factory.ManagerFactory;
  * @author moesio @ gmail.com
  * @date Nov 15, 2016 11:40:28 AM
  */
-public class ListFragment extends Fragment implements android.view.View.OnClickListener {
+public class ListFragment extends Fragment {
 
 	private ReportManagerImpl reportManager;
 	private List<Report> reportList = new ArrayList<Report>();
@@ -37,18 +35,6 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.list, container, false);
-
-		ImageView imgHours = (ImageView) view.findViewById(R.id.imgHours);
-		ImageView imgPlacements = (ImageView) view.findViewById(R.id.imgPlacements);
-		ImageView imgVideoShowing = (ImageView) view.findViewById(R.id.imgVideoShowing);
-		ImageView imgReturnVisits = (ImageView) view.findViewById(R.id.imgReturnVisits);
-		ImageView imgStudies = (ImageView) view.findViewById(R.id.imgStudies);
-
-		imgHours.setOnClickListener(this);
-		imgPlacements.setOnClickListener(this);
-		imgVideoShowing.setOnClickListener(this);
-		imgReturnVisits.setOnClickListener(this);
-		imgStudies.setOnClickListener(this);
 
 		listView = (ListView) view.findViewById(R.id.reportList);
 		listView.setAdapter(new ListAdapter());
@@ -64,7 +50,7 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 		reportList = reportManager.list();
 		super.onResume();
 	}
-	
+
 	/**
 	 * @author moesio @ gmail.com
 	 * @date Nov 15, 2016 1:09:11 PM
@@ -187,8 +173,4 @@ public class ListFragment extends Fragment implements android.view.View.OnClickL
 		TextView txtStudies;
 	}
 
-	@Override
-	public void onClick(View v) {
-		Toast.makeText(getActivity(), ((ImageView) v).getContentDescription(), Toast.LENGTH_SHORT).show();
-	}
 }
