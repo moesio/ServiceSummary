@@ -38,7 +38,6 @@ public class ListFragment extends Fragment {
 
 		listView = (ListView) view.findViewById(R.id.reportList);
 		listView.setAdapter(new ListAdapter());
-
 		listView.setOnItemClickListener(new ClickItemListener());
 
 		return view;

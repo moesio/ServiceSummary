@@ -7,12 +7,30 @@
         android:showAsAction="ifRoom"
         android:title="@string/sum">
     </item>
+    
     <item
         android:id="@+id/menuItemClear"
         android:icon="@drawable/ic_delete_sweep_white_24dp"
         android:showAsAction="ifRoom"
         android:title="@string/clear">
     </item>
+    
+    <!-- 
+    <item
+        android:id="@+id/menuVisible"
+        android:icon="@drawable/ic_remove_red_eye_white_24dp"
+        android:showAsAction="ifRoom"
+        android:title="@string/beVisible">
+    </item>
+     -->
+
+    <item
+        android:id="@+id/menuReceive"
+        android:icon="@drawable/ic_get_app_white_24dp"
+        android:showAsAction="ifRoom"
+        android:title="@string/receive">
+    </item>
+
     <item
         android:id="@+id/menuUpload"
         android:icon="@drawable/ic_file_upload_white_24dp"

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.anowit.servicesummary.R;
 import com.anowit.servicesummary.actions.AddReportAction;
 import com.anowit.servicesummary.actions.ClearListAction;
+import com.anowit.servicesummary.actions.ReceiveAction;
 import com.anowit.servicesummary.actions.SaveReportAction;
 import com.anowit.servicesummary.actions.UploadAction;
 import com.anowit.servicesummary.helpers.ActionMap;
@@ -57,6 +58,8 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		actionMap.append(R.id.menuItemSave, new SaveReportAction(this));
 		actionMap.append(R.id.menuUpload, new UploadAction(this));
 		actionMap.append(R.id.menuSum, new AddReportAction(this));
+		actionMap.append(R.id.menuReceive, new ReceiveAction(this));
+		//		actionMap.append(R.id.menuVisible, new VisibleAction(this));
 	}
 
 	private void initializeDatabase() {

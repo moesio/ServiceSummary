@@ -52,5 +52,16 @@
     <string name="title_activity_bluetooth_activiy">BluetoothActiviy</string>
     <string name="hello_world">Hello world!</string>
     <string name="add_report">Adicionar relatório</string>
+    <string name="receive">Receber relatórios</string>
+    <string name="title_paired_devices">Dispositivos pareados</string>
+    <string name="title_other_devices">Outros dispositivos</string>
+    <string name="button_scan">Procurar</string>
+    <string name="none_paired">Nenhum dispositivo pareado</string>
+    <string name="scanning">Procurando</string>
+    <string name="select_device">Selecione dispositivo</string>
+    <string name="none_found">Nenhum encontrado</string>
+    <string name="beVisible">Ficar visível</string>
+    <string name="bluetooth_is_not_available">Bluetooth não está disponível</string>
+    <string name="bt_not_enabled_leaving">Bluetooth não foi habilitado</string>
 
 </resources>
